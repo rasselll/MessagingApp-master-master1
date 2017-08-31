@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/singleuserlist"
+    android:layout_width="match_parent"
+    android:background="@drawable/my_shape_file"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp">
+    <ImageView
+        android:id="@+id/imageview_post_userimage1"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginRight="10dp"
+        android:paddingRight="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Default Name"
+        android:textAlignment="center"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        android:layout_alignBottom="@+id/imageView"
+        android:layout_toEndOf="@+id/imageview_post_userimage1" />
+
+    <TextView
+        android:id="@+id/userstatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/username"
+        android:layout_below="@+id/username"
+        android:layout_marginTop="9dp"
+        android:text="Default Status"
+        android:textAlignment="center"
+        android:textSize="14sp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="41dp"
+        android:visibility="invisible"
+        app:srcCompat="@android:drawable/presence_online" />
+
+
+
+</RelativeLayout>

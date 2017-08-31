@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#F5F5F5"
+    tools:context="com.myproj.blogapp.timetable"
+    android:fillViewport="true">
+
+
+    <TableLayout
+        android:id="@+id/salay_table"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+
+        <TableRow
+            android:id="@+id/cat"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="1dp"
+            android:background="@drawable/my_shape_file"
+
+            >
+
+            <TextView
+                android:id="@+id/salah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="#fff"
+                android:gravity="center"
+                android:padding="1dp"
+                android:textStyle="normal"
+                android:text="date"
+                android:textSize="15dp"
+
+                android:textColor="#000" />
+
+            <TextView
+                android:id="@+id/begin"
+                android:textColor="#000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="1dp"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:text="Begins"
+                />
+
+            <TextView
+                android:id="@+id/jamat"
+                android:textColor="#000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="15dp"
+                android:gravity="center"
+                android:padding="1dp"
+                android:textStyle="bold"
+                android:text="Jamat"
+                />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/fajr"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+
+            android:background="@drawable/my_shape_file">
+
+            <TextView
+                android:id="@+id/fajr_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="#fff"
+                android:gravity="center"
+                android:padding="25dp"
+                android:text="Fajr"
+                android:textSize="19dp"
+                android:textColor="#000" />
+
+
+
+            <TextView
+                android:id="@+id/fajr_begins"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="25dp"
+                android:textSize="18dp"
+                android:text="4:30"
+                android:background="@drawable/shape_sides"/>
+
+
+            <TextView
+                android:id="@+id/fajr_jamat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="18dp"
+                android:gravity="center"
+                android:padding="25dp"
+                android:text="4:50"
+                android:background="@drawable/shape_sides"/>
+
+        </TableRow>
+
+
+
+        <TableRow
+            android:id="@+id/zuhur"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/my_shape_file">
+
+            <TextView
+                android:id="@+id/zuhur_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="#fff"
+                android:gravity="center"
+                android:padding="25dp"
+                android:text="Zuhur"
+                android:textSize="19dp"
+                android:textColor="#000" />
+
+            <TextView
+                android:id="@+id/zuhur_begin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="25dp"
+                android:textSize="18dp"
+                android:text="null"
+                android:background="@drawable/shape_sides"/>
+
+            <TextView
+                android:id="@+id/zuhur_jamat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="18dp"
+                android:gravity="center"
+                android:padding="25dp"
+                android:text="null"
+                android:background="@drawable/shape_sides"/>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/asr"
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/my_shape_file">
+
+            <TextView
+                android:id="@+id/asr_time"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="#fff"
+                android:gravity="center"
+                android:padding="25dp"
+                android:text="Asr"
+                android:textSize="19dp"
+                android:textColor="#000" />
+
+            <TextView
+                android:id="@+id/asr_begin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="25dp"
+                android:textSize="18dp"
+                android:text="18:45"
+                android:background="@drawable/shape_sides"/>
+
+            <TextView
+                android:id="@+id/asr_jamat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="18dp"
+                android:gravity="center"
+                android:padding="25dp"
+                android:text="19:00"
+                android:background="@drawable/shape_sides"/>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/magrib"
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/my_shape_file">
+
+            <TextView
+                android:id="@+id/magrib_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="#fff"
+                android:gravity="center"
+                android:padding="25dp"
+                android:text="Magrib"
+                android:textSize="19dp"
+                android:textColor="#000" />
+
+            <TextView
+                android:id="@+id/magrib_begin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="25dp"
+                android:textSize="18dp"
+                android:text="18:45"
+                android:background="@drawable/shape_sides"/>
+
+            <TextView
+                android:id="@+id/magrib_jamat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="18dp"
+                android:gravity="center"
+                android:padding="25dp"
+                android:text="19:00"
+                android:background="@drawable/shape_sides"/>
+        </TableRow>
+
+        <TableRow
+
+            android:id="@+id/eisha"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/my_shape_file">
+
+
+
+            <TextView
+                android:id="@+id/eisha_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="#fff"
+                android:gravity="center"
+                android:padding="25dp"
+                android:text="Eisha"
+                android:textSize="19dp"
+                android:textColor="#000" />
+
+            <TextView
+                android:id="@+id/eisha_begin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="25dp"
+                android:textSize="18dp"
+                android:text="18:45"
+                android:background="@drawable/shape_sides"/>
+
+            <TextView
+                android:id="@+id/eisha_jamat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="18dp"
+                android:gravity="center"
+                android:padding="25dp"
+                android:text="19:00"
+                android:background="@drawable/shape_sides"/>
+
+        </TableRow>
+
+        <!--    <TableRow
+
+                android:id="@+id/test"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:background="@drawable/my_shape_file">
+
+
+
+                <TextView
+                    android:id="@+id/testview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="#fff"
+                    android:gravity="center"
+                    android:padding="25dp"
+                    android:text="Eisha"
+                    android:textSize="19dp"
+                    android:textColor="#000" />
+
+                <TextView
+                    android:id="@+id/testtext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="1dp"
+                    android:textSize="15dp"
+                    android:text="18:45 PM"
+                    android:background="@drawable/shape_sides"/>
+
+                <TextView
+                    android:id="@+id/hj"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="15dp"
+                    android:gravity="center"
+                    android:padding="1dp"
+                    android:text="19:00 PM"
+                    android:background="@drawable/shape_sides"/>
+
+
+
+            </TableRow>-->
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- tag has the position of the active button -->
+            <fragment
+                android:id="@+id/bottom_navigation_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:tag="0"
+                android:name="com.myproj.blogapp.BottomNavigationFragment"
+                tools:layout="@layout/fragment_bottom_navigation" />
+
+        </RelativeLayout>
+
+    </TableLayout>
+
+
+</ScrollView>

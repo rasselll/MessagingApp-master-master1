@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+
+<tbody><tr>
+
+    <td class="time-left"></td>
+    <td class="time-left">day</td>
+    <td class="heading">Sehri</td>
+
+    <td class="heading">fajrStart</td>
+    <td class="heading">fajrJamat</td>
+
+    <td class="heading">sunrise</td>
+    <td class="heading">Zawal</td>
+
+    <td class="heading">zuhurStart</td>
+    <td class="heading">zuhurJamat</td>
+
+    <td class="heading">asrStart</td>
+    <td class="heading">asrJamat</td>
+
+    <td class="heading">magribStart</td>
+
+
+    <td class="heading">ishaStart</td>
+    <td class="heading">ishaEnd</td>
+
+
+
+
+</tr>
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#FFFFFF"/>
+    <stroke android:width="2dp" android:color="#15601C"/>
+    <corners android:radius="2dp" />
+    <padding android:left="5dp" android:top="5dp"
+        android:right="5dp" android:bottom="5dp" />
+</shape>
+

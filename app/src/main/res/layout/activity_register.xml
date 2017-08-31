@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#fff"
+    tools:context="com.myproj.blogapp.RegisterActivity">
+
+    <!--   <Button
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign up"
+       android:src="@drawable/sign"
+        android:id="@+id/registerButton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="54dp" />-->
+
+    <ImageView
+
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="220dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="450dp"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/banner"
+     />
+
+    <!--    <ImageButton
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageButton"
+            android:src="@drawable/loginwordbtn"
+            android:layout_below="@+id/registerButton"
+            android:layout_centerHorizontal="true"
+            android:background="#00ffffff" />-->
+
+
+    <EditText
+        android:id="@+id/nameField"
+        android:layout_width="340dp"
+        android:layout_height="60dp"
+        android:inputType="textPersonName"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:background="@drawable/recname"
+        android:ems="10"
+        android:layout_marginBottom="270dp"
+        android:hint="Name"
+android:gravity="center"
+        android:textColor="#000"
+        android:textSize="17dp" />
+
+    <EditText
+
+        android:gravity="center"
+        android:id="@+id/emailField"
+        android:layout_width="340dp"
+        android:layout_height="60dp"
+android:layout_alignTop="@+id/nameField"
+        android:layout_alignStart="@+id/nameField"
+        android:background="@drawable/recname"
+        android:ems="10"
+        android:layout_marginBottom="370dp"
+        android:hint="Email"
+        android:layout_marginTop="80dp"
+        android:inputType="textEmailAddress"
+        android:textSize="17dp" />
+
+    <EditText
+        android:layout_marginTop="80dp"
+        android:id="@+id/passwordField"
+        android:layout_width="340dp"
+        android:layout_height="60dp"
+        android:layout_alignTop="@+id/emailField"
+        android:layout_alignStart="@+id/emailField"
+        android:background="@drawable/recpassword"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Password"
+        android:layout_marginBottom="20dp"
+
+        android:inputType="textPassword"
+        android:textSize="17dp" />
+
+    <ImageButton
+
+        android:layout_marginBottom="370dp"
+        android:layout_width="340dp"
+        android:layout_height="60dp"
+        android:id="@+id/registerButton"
+        android:gravity="center"
+        android:background="#00ffffff"
+        android:src="@drawable/conbtn"
+        android:layout_below="@+id/passwordField"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/post_activity_horizontal_margin"
+    tools:context="com.myproj.blogapp.MainActivity"
+    android:background="@color/background">
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/blog_list"
+        ></android.support.v7.widget.RecyclerView>
+
+
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="center"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="@dimen/fab_margin_b0ttom"
+            android:layout_marginRight="@dimen/fab_margin_right"
+            app:fabSize="normal"
+            app:backgroundTint="@color/colorPrimary"
+            android:src="@drawable/ic_action_posts"
+            android:id="@+id/fab"/>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+
+
+        <fragment
+            android:id="@+id/bottom_navigation_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:tag="1"
+            android:name="com.myproj.blogapp.BottomNavigationFragment"
+            tools:layout="@layout/fragment_bottom_navigation" />
+
+
+</RelativeLayout>

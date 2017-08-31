@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ffffff</color>
+    <color name="pubcolor">#126428</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="blackt">#000</color>
+    <color name="background">#EEEEEE</color>
+    <color name="colorBottomNavigationButton">#7F7F7F</color>
+
+    <color name="white">#7F7F7F</color>
+    <color name="black">#FFF</color>
+    <color name="white_greyish">#EEEEEE</color>
+    <color name="button_selectorcolor">#EEEEEE</color>
+    <color name="background_color">#FFF</color>
+</resources>

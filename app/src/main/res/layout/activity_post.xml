@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+
+    android:paddingTop="@dimen/post_activity_horizontal_margin"
+    android:paddingBottom="0dp"
+
+    tools:context="com.myproj.blogapp.PostActivity"
+    android:background="#FFFFFF">
+
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:scrollbars="none"
+        android:id="@+id/scrollView">
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:stretchColumns="1" >
+
+        <TableRow>
+<EditText
+        android:backgroundTint="@android:color/transparent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/titleField"
+        android:textSize="30sp"
+        android:hint="@string/hint_title"
+        android:textColor="#000"
+        android:textCursorDrawable="@null"
+        android:textStyle="bold"
+        android:paddingBottom="0dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+        </TableRow>
+        <TableRow>
+    <EditText
+        android:backgroundTint="@android:color/transparent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textCursorDrawable="@null"
+        android:id="@+id/descField"
+        android:textSize="18sp"
+        android:hint="@string/hint_desc"
+        android:textColor="#000000"
+        android:textStyle="normal"
+        android:paddingBottom="25dp"
+        android:layout_below="@+id/titleField"
+        android:layout_alignParentStart="true" />
+
+        </TableRow>
+
+
+
+    <ImageButton
+        android:layout_width="match_parent"
+        android:background="#00f9f9f9"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageSelect"
+        android:adjustViewBounds="true"
+        android:src="@mipmap/add_btn"
+        android:cropToPadding="false"
+        android:scaleType="centerCrop"
+        android:layout_above="@+id/btn"
+        android:layout_alignParentStart="true" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/newimage"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
+
+
+        </TableLayout>
+    </ScrollView>
+
+
+
+
+    <fragment
+        android:id="@+id/bottom_navigation_fragment1"
+        android:layout_width="wrap_content"
+        android:layout_height="23dp"
+        android:tag="1"
+        android:name="com.myproj.blogapp.postStyles"
+        tools:layout="@layout/post_styles_activity"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/scrollView"
+        android:layout_alignTop="@+id/linearLayout"
+        android:layout_alignParentBottom="true" />
+
+
+
+</RelativeLayout>

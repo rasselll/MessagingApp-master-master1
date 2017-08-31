@@ -1,0 +1,46 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+       <item name="colorPrimaryDark">@color/background_material_dark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorSecondary">#5D5A5A</item>
+        <item name="actionBarTheme">@style/AppTheme.ActionBarTheme</item> <!-- used for the back arrow on the action bar -->
+
+    </style>
+
+
+
+
+
+    <style name="AppTheme.ActionBarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+        <!-- THIS is where you can color the arrow and the overflow button! -->
+        <item name="colorControlNormal">#5D5A5A</item>
+        <item name="actionMenuTextColor">@color/pubcolor</item>
+        <item name="android:actionMenuTextColor">@color/pubcolor</item>
+
+
+    </style>
+
+
+    <!-- Style for Bottom Navigation Bar buttons -->
+    <style name="BottomNavigationBarButton" parent="Base.Widget.AppCompat.Button">
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">0dp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/colorBottomNavigationButton</item>
+    </style>
+
+
+    <!-- Style for Bottom Navigation Bar buttons -->
+    <style name="stylesnav" parent="Base.Widget.AppCompat.Button">
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">0dp</item>
+        <item name="android:textColor">@color/colorBottomNavigationButton</item>
+    </style>
+
+</resources>

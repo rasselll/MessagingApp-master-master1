@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:background="@android:color/white"
+    android:layout_alignParentBottom="true"
+    android:weightSum="1"
+    android:paddingTop="3dp">
+
+    <Button
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@mipmap/fontbold4"
+        android:id="@+id/button1"
+        android:layout_weight="0.25"
+        style="@style/stylesnav" />
+
+    <Button
+
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawable="@mipmap/i4"
+        android:id="@+id/button2"
+        android:layout_weight="0.25"
+        style="@style/stylesnav"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@mipmap/fontunderline2"
+        android:id="@+id/button3"
+        android:layout_weight="0.25"
+        style="@style/stylesnav"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@mipmap/fontimage2"
+        android:id="@+id/button4"
+        android:layout_weight="0.25"
+        style="@style/stylesnav"/>
+</LinearLayout>
