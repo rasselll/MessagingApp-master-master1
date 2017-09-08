@@ -49,7 +49,7 @@ public class PostActivity extends AppCompatActivity {
 
     private Uri mImageURi = null;
 
-private static  final int GALLERY_REQUEST = 1;
+    private static final int GALLERY_REQUEST = 1;
 
     private StorageReference mStorage;
     private DatabaseReference mDatabase;
@@ -61,7 +61,7 @@ private static  final int GALLERY_REQUEST = 1;
 
     private FirebaseUser mCurrentUser;
 
-    private  DatabaseReference mDatabaseUser;
+    private DatabaseReference mDatabaseUser;
     private RichEditor mEditor;
 
     @Override
@@ -74,7 +74,6 @@ private static  final int GALLERY_REQUEST = 1;
         mEditor.setEditorHeight(200);
         mEditor.setEditorFontSize(22);
         mEditor.setPlaceholder("Description goes here...");
-
 
 
         mAuth = FirebaseAuth.getInstance();
@@ -125,7 +124,8 @@ private static  final int GALLERY_REQUEST = 1;
         });
 
         findViewById(R.id.action_underline).setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View v) {
+            @Override
+            public void onClick(View v) {
 
                 Intent galleryIntent = new Intent();
                 galleryIntent.setType("image/*");
@@ -139,21 +139,16 @@ private static  final int GALLERY_REQUEST = 1;
     }
 
 
-
-
     private void startPosting() {
-mProgress.setMessage("Posting...");
+        mProgress.setMessage("Posting...");
 
         mProgress.getProgress();
-       final  String title_val = mPostTitle.getText().toString().trim();
-       final  String desc_val = mPostDesc.getText().toString().trim();
-        final  String content_val = mEditor.getHtml();
+        final String title_val = mPostTitle.getText().toString().trim();
+        final String desc_val = mPostDesc.getText().toString().trim();
+        final String content_val = mEditor.getHtml();
 
 
-
-
-
-        if(!TextUtils.isEmpty(title_val) && !TextUtils.isEmpty(desc_val) && mImageURi != null){
+        if (!TextUtils.isEmpty(title_val) && !TextUtils.isEmpty(desc_val) && mImageURi != null) {
             mProgress.show();
             StorageReference filepath = mStorage.child("Blog_Image").child(mImageURi.getLastPathSegment());
 
@@ -163,9 +158,9 @@ mProgress.setMessage("Posting...");
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                    final   Uri downlaodUrl = taskSnapshot.getDownloadUrl();
+                    final Uri downlaodUrl = taskSnapshot.getDownloadUrl();
 
-                    final  DatabaseReference newPost = mDatabase.push();
+                    final DatabaseReference newPost = mDatabase.push();
 
 
                     mDatabaseUser.addValueEventListener(new ValueEventListener() {
@@ -180,10 +175,10 @@ mProgress.setMessage("Posting...");
                             newPost.child("username").setValue(dataSnapshot.child("name").getValue()).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
-                                    if(task.isSuccessful()){
+                                    if (task.isSuccessful()) {
                                         finish();
                                         startActivity(new Intent(PostActivity.this, MainActivity.class));
-                                    }else{
+                                    } else {
                                         //TODO error message
                                     }
                                 }
@@ -192,7 +187,6 @@ mProgress.setMessage("Posting...");
 
                         @Override
                         public void onCancelled(DatabaseError databaseError) {
-
 
 
                         }
@@ -214,20 +208,16 @@ mProgress.setMessage("Posting...");
         super.onActivityResult(requestCode, resultCode, data);
 
 
-        if(requestCode == GALLERY_REQUEST && resultCode == RESULT_OK){
+        if (requestCode == GALLERY_REQUEST && resultCode == RESULT_OK) {
+
+            mImageURi = data.getData();
+            mSelectImage.setImageURI(mImageURi);
+            String myURI = mImageURi.toString();
+            mEditor.insertImage(myURI, "image");
 
 
-
-        mImageURi = data.getData();
-        mSelectImage.setImageURI(mImageURi);
-
-           String myURI = mImageURi.toString();
-
-        mEditor.insertImage(myURI, "image");
-
+        }
     }
-    }
-
 
 
     @Override
@@ -241,13 +231,13 @@ mProgress.setMessage("Posting...");
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == android.R.id.home){
+        if (id == android.R.id.home) {
             this.finish();
         }
         return super.onOptionsItemSelected(item);
     }
 
-    public void publish(MenuItem item){
+    public void publish(MenuItem item) {
 
         startPosting();
     }

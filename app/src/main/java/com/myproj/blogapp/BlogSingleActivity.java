@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.Spanned;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -28,6 +30,8 @@ public class BlogSingleActivity extends AppCompatActivity {
     private TextView mBlogSingleTitle;
     private  TextView mBlogSingleDesc;
 
+    private  TextView mBlogSingleContent;
+
     private Button mBlogSingleRemoveBtn;
 
     private FirebaseAuth mAuth;
@@ -46,7 +50,10 @@ public class BlogSingleActivity extends AppCompatActivity {
 
         mBlogSingleDesc = (TextView) findViewById(R.id.descriptionSingleBlog);
         mBlogSingleTitle = (TextView) findViewById(R.id.titleSingleBlog);
+        mBlogSingleContent = (TextView) findViewById(R.id.contentSingleBlog);
+
         mBlogSingleImage = (ImageView) findViewById(R.id.imageSingleBlog);
+
 
         mBlogSingleRemoveBtn = (Button) findViewById(R.id.singleRemoveBtn);
 
@@ -61,9 +68,15 @@ public class BlogSingleActivity extends AppCompatActivity {
                 String post_desc = (String) dataSnapshot.child("desc").getValue();
                 String post_image = (String) dataSnapshot.child("image").getValue();
                 String post_uid = (String) dataSnapshot.child("uid").getValue();
+                String post_content = (String) dataSnapshot.child("content").getValue();
 
                 mBlogSingleTitle.setText(post_title);
                 mBlogSingleDesc.setText(post_desc);
+
+
+                Spanned sp = Html.fromHtml(post_content);
+                mBlogSingleContent.setText(sp);
+                //mBlogSingleContent.setText(post_content);
 
                 Picasso.with(BlogSingleActivity.this).load(post_image).into(mBlogSingleImage);
 

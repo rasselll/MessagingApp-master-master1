@@ -3,6 +3,7 @@ package com.myproj.blogapp;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +21,7 @@ import android.view.WindowManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.webkit.WebView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -321,9 +323,16 @@ public class MainActivity extends AppCompatActivity {
         }
 
         public void setContent(String content) {
-         TextView post_content = (TextView) mView.findViewById(R.id.post_content);
+
+            TextView post_content = (TextView) mView.findViewById(R.id.post_content);
+            WebView webview = (WebView)  mView.findViewById(R.id.post_contentWeb);
+
             Spanned sp = Html.fromHtml(content);
             post_content.setText(sp);
+
+
+            webview.loadDataWithBaseURL(null, "<style>img{display: inline;height: auto;max-width: 100%;}</style>" + content, "text/html", "utf-8", "");
+
 
         }
 
