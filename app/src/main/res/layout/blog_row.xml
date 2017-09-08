@@ -57,6 +57,19 @@
             android:paddingBottom="10dp"
             android:paddingLeft="15dp" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/post_content"
+            android:text="content is here"
+            android:textSize="17dp"
+            android:paddingTop="10dp"
+            android:textColor="@color/abc_input_method_navigation_guard"
+            android:paddingBottom="10dp"
+            android:paddingLeft="15dp" />
+
+
+
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"

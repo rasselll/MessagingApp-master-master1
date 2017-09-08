@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
 
     android:paddingTop="@dimen/post_activity_horizontal_margin"
@@ -39,6 +40,16 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
         </TableRow>
+
+            <TableRow>   <jp.wasabeef.richeditor.RichEditor
+                android:id="@+id/editor"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="@string/hint_desc"
+                android:textColor="#000000"
+                android:layout_below="@+id/titleField"
+                android:layout_alignParentStart="true"/></TableRow>
+
         <TableRow>
     <EditText
         android:backgroundTint="@android:color/transparent"
@@ -53,6 +64,7 @@
         android:paddingBottom="25dp"
         android:layout_below="@+id/titleField"
         android:layout_alignParentStart="true" />
+
 
         </TableRow>
 
@@ -79,12 +91,99 @@
 
 
         </TableLayout>
+
+
     </ScrollView>
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="@android:color/white"
+        android:layout_alignParentBottom="true"
+        android:weightSum="1"
+        android:paddingTop="3dp">
 
 
 
-    <fragment
+
+        <ImageView
+            android:layout_alignParentBottom="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/action_bold1"
+            android:layout_weight="0.25"
+            app:srcCompat="@mipmap/fontbold4" />
+
+        <ImageView
+            android:layout_alignParentBottom="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/action_italic"
+            android:layout_weight="0.25"
+            app:srcCompat="@mipmap/i4" />
+
+        <ImageView
+            android:layout_alignParentBottom="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/action_underline"
+            android:layout_weight="0.25"
+            app:srcCompat="@mipmap/fontunderline2" />
+    </LinearLayout>
+
+<!--
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="10dp">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/action_bold1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:scaleType="center"
+                app:srcCompat="@mipmap/fontbold4" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/action_italic"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:scaleType="center"
+                android:clickable="true"
+                app:srcCompat="@mipmap/i4" />
+
+            <ImageView
+                android:id="@+id/action_underline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="center"
+                android:clickable="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                app:srcCompat="@mipmap/fontunderline2" />
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <jp.wasabeef.richeditor.RichEditor
+        android:id="@+id/editor"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="top|start" />
+-->
+
+
+<!--<fragment
         android:id="@+id/bottom_navigation_fragment1"
         android:layout_width="wrap_content"
         android:layout_height="23dp"
@@ -94,7 +193,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignEnd="@+id/scrollView"
         android:layout_alignTop="@+id/linearLayout"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true"></fragment>-->
 
 
 

@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
+import android.text.Spanned;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -36,6 +38,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import jp.wasabeef.picasso.transformations.CropCircleTransformation;
+import jp.wasabeef.richeditor.RichEditor;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayoutManager mLayoutManager;
     private DatabaseReference mDatabaseLike;
     private boolean mProcessLike = false;
-
+    private RichEditor mEditor;
 
     FloatingActionButton fab;
 
@@ -58,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mEditor = (RichEditor) findViewById(R.id.editor);
 
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -139,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
                 viewHolder.setDesc(model.getDesc());
                 viewHolder.setImage(getApplicationContext(), model.getImage());
                 viewHolder.setUsername(model.getUsername());
+                viewHolder.setContent(model.getContent());
                 viewHolder.setLikeBtn(post_key);
                 viewHolder.mView.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -312,7 +317,16 @@ public class MainActivity extends AppCompatActivity {
             TextView post_title = (TextView) mView.findViewById(R.id.post_title);
             post_title.setText(title);
 
+
         }
+
+        public void setContent(String content) {
+         TextView post_content = (TextView) mView.findViewById(R.id.post_content);
+            Spanned sp = Html.fromHtml(content);
+            post_content.setText(sp);
+
+        }
+
 
         public void setDesc(String desc) {
             TextView post_desc = (TextView) mView.findViewById(R.id.post_desc);

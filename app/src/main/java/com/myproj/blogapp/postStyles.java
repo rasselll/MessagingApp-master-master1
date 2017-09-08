@@ -6,18 +6,21 @@ import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import jp.wasabeef.richeditor.RichEditor;
+
 /**
  * Created by Guillermo on 09/04/2016.
  */
 public class postStyles extends Fragment {
 
-    private final static String TAG = BottomNavigationFragment.class.getName();
+    private final static String TAG = postStyles.class.getName();
 
     private Button button1;
     private Button button2;
@@ -27,10 +30,19 @@ public class postStyles extends Fragment {
 
     int selectedPosition;
 
+
+
+
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
     }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -78,6 +90,8 @@ public class postStyles extends Fragment {
         });
 
         return view;
+
+
     }
 
     @Override
