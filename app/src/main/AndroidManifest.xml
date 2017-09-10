@@ -29,7 +29,8 @@
             android:theme="@style/Base.Theme.AppCompat" />
         <activity
             android:name=".PostActivity"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustPan"
+          />
         <activity
             android:name=".timetable"
             android:label="Salah Times"

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.text.Spanned;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -33,6 +34,7 @@ public class BlogSingleActivity extends AppCompatActivity {
     private  TextView mBlogSingleContent;
 
     private Button mBlogSingleRemoveBtn;
+    private WebView mBlogSingleContentWebView;
 
     private FirebaseAuth mAuth;
 
@@ -57,6 +59,7 @@ public class BlogSingleActivity extends AppCompatActivity {
 
         mBlogSingleRemoveBtn = (Button) findViewById(R.id.singleRemoveBtn);
 
+        mBlogSingleContentWebView = (WebView) findViewById(R.id.singleContent_webView);
 
 
 
@@ -76,7 +79,25 @@ public class BlogSingleActivity extends AppCompatActivity {
 
                 Spanned sp = Html.fromHtml(post_content);
                 mBlogSingleContent.setText(sp);
-                //mBlogSingleContent.setText(post_content);
+
+
+             //   mBlogSingleContentWebView.loadDataWithBaseURL(null, "<style>img{display: inline;height: auto;max-width: 100%;}[0]</style>"+ post_content, "text/html", "utf-8", "");
+
+                mBlogSingleContentWebView.loadDataWithBaseURL(null,
+                        "<style>html, body {\n" +
+                                "width:100%;\n" +
+                                "height: 100%;\n" +
+                                "margin: 0px;\n" +
+                                "padding: 0px;\n" +
+                                "}" +
+                                "img{" +
+                                "max-width: 100%; " +
+                                "width:auto;" +
+                                " height: auto;" +
+                                "}" +
+                                "</style>"+ post_content, "text/html", "utf-8", "");
+
+                mBlogSingleContentWebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
 
                 Picasso.with(BlogSingleActivity.this).load(post_image).into(mBlogSingleImage);
 

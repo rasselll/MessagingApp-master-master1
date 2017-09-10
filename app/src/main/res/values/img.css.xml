@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    img {
+    display: inline;
+    height: auto;
+    max-width: 100%;
+
+    }
+</resources>

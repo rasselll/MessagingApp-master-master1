@@ -39,6 +39,9 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 import jp.wasabeef.richeditor.RichEditor;
 
@@ -326,13 +329,37 @@ public class MainActivity extends AppCompatActivity {
 
             TextView post_content = (TextView) mView.findViewById(R.id.post_content);
             WebView webview = (WebView)  mView.findViewById(R.id.post_contentWeb);
+            WebView singleImg = (WebView) mView.findViewById(R.id.post_singleImage);
+
 
             Spanned sp = Html.fromHtml(content);
             post_content.setText(sp);
 
+            String v ="";
+            Pattern pattern = Pattern.compile("(<img .*?>)");
+            Matcher matcher = pattern.matcher(content);
+            if (matcher.find()) {
+                v = matcher.group(1);
+            }
 
-            webview.loadDataWithBaseURL(null, "<style>img{display: inline;height: auto;max-width: 100%;}</style>" + content, "text/html", "utf-8", "");
 
+            webview.loadDataWithBaseURL(null, "<style>img{display: inline;height: auto;max-width: 100%;}</style>"+ content, "text/html", "utf-8", "");
+            webview.getSettings().setLoadsImagesAutomatically(false);
+            singleImg.loadDataWithBaseURL(null,
+                    "<style>html, body {\n" +
+                    "width:100%;\n" +
+                    "height: 100%;\n" +
+                    "margin: 0px;\n" +
+                    "padding: 0px;\n" +
+                    "}" +
+                    "img{" +
+                    "max-width: 100%; " +
+                    "width:auto;" +
+                     " height: auto;" +
+                     "}" +
+                      "</style>"+ v, "text/html", "utf-8", "");
+
+            singleImg.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
 
         }
 
@@ -346,6 +373,9 @@ public class MainActivity extends AppCompatActivity {
             ImageView post_image = (ImageView) mView.findViewById(R.id.post_image);
 
             Picasso.with(ctx).load(image).into(post_image);
+
+
+
         }
 
         public void setUsername(String username) {

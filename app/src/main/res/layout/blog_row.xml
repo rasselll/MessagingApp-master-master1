@@ -13,8 +13,8 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
         android:paddingBottom="@dimen/post_activity_horizontal_margin"
-        android:paddingLeft="@dimen/post_activity_horizontal_margin"
-        android:paddingRight="@dimen/post_activity_horizontal_margin"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
         android:paddingTop="@dimen/activity_vertical_margin"
         tools:context="com.myproj.blogapp.PostActivity"
         android:background="#FFFFFF">
@@ -37,14 +37,26 @@
             android:textColor="#000"
             android:paddingLeft="15dp" />
 
+        <WebView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/post_singleImage"
+            android:adjustViewBounds="true"
+            android:cropToPadding="false"
+            android:scaleType="centerCrop"
+            />
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/post_image"
-            android:src="@mipmap/add_btn"
             android:adjustViewBounds="true"
             android:cropToPadding="false"
-            android:scaleType="centerCrop" />
+            android:scaleType="centerCrop"
+            android:visibility="invisible"/>
+
+
+
 
         <TextView
             android:layout_width="match_parent"

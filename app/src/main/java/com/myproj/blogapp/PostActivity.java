@@ -41,7 +41,8 @@ public class PostActivity extends AppCompatActivity {
 
     private ImageButton mSelectImage;
     private EditText mPostTitle;
-    private EditText mPostDesc;
+    private RichEditor mPostDesc;
+
     private TextView mPreview;
 
 
@@ -63,6 +64,7 @@ public class PostActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabaseUser;
     private RichEditor mEditor;
+    private RichEditor mEditordesc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,10 +72,23 @@ public class PostActivity extends AppCompatActivity {
         setContentView(R.layout.activity_post);
 
 
+
         mEditor = (RichEditor) findViewById(R.id.editor);
-        mEditor.setEditorHeight(200);
-        mEditor.setEditorFontSize(22);
-        mEditor.setPlaceholder("Description goes here...");
+        mEditordesc = (RichEditor) findViewById(R.id.descField);
+
+
+        mEditordesc.setEditorHeight(18);
+        mEditordesc.setEditorFontSize(18);
+        mEditordesc.setPadding(5,5,20,20);
+        mEditordesc.setPlaceholder("Say something nice...      ");
+
+
+        mEditor.setEditorHeight(18);
+        mEditor.setEditorFontSize(18);
+        mEditor.setPadding(5,5,20,20);
+        mEditor.setPlaceholder("Say something nice...      ");
+        mEditor.loadCSS("file:///android_asset/img.css");
+        mEditor.computeScroll();
 
 
         mAuth = FirebaseAuth.getInstance();
@@ -88,8 +103,9 @@ public class PostActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mPostTitle = (EditText) findViewById(R.id.titleField);
-        mPostDesc = (EditText) findViewById(R.id.descField);
-        mSubmitBtn = (Button) findViewById(R.id.btn);
+       // mPostDesc = (EditText) findViewById(R.id.descField);
+        mPostDesc = mEditordesc;
+     //   mSubmitBtn = (Button) findViewById(R.id.btn);
 
 
         mProgress = new ProgressDialog(this);
@@ -144,7 +160,7 @@ public class PostActivity extends AppCompatActivity {
 
         mProgress.getProgress();
         final String title_val = mPostTitle.getText().toString().trim();
-        final String desc_val = mPostDesc.getText().toString().trim();
+        final String desc_val = mPostDesc.getHtml().toString().trim();
         final String content_val = mEditor.getHtml();
 
 
@@ -212,8 +228,11 @@ public class PostActivity extends AppCompatActivity {
 
             mImageURi = data.getData();
             mSelectImage.setImageURI(mImageURi);
+
             String myURI = mImageURi.toString();
             mEditor.insertImage(myURI, "image");
+
+
 
 
         }
