@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -65,30 +66,63 @@ public class PostActivity extends AppCompatActivity {
     private DatabaseReference mDatabaseUser;
     private RichEditor mEditor;
     private RichEditor mEditordesc;
+    private ScrollView ScrollView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
+/*        ScrollView ScrollView = (ScrollView) findViewById(R.id.scroll);
+        ScrollView.fullScroll(ScrollView.FOCUS_DOWN);*/
 
 
+        final ScrollView scrollview = ((ScrollView) findViewById(R.id.scroll));
+        scrollview.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                scrollview.fullScroll(ScrollView.FOCUS_DOWN);
+            }
+        },10000);
+
+
+
+
+        View lastChild = scrollview.getChildAt(scrollview.getChildCount() - 1);
+        int bottom = lastChild.getBottom() + scrollview.getPaddingBottom();
+        int sy = scrollview.getScrollY();
+        int sh = scrollview.getHeight();
+        int delta = bottom - (sy + sh);
+
+        scrollview.smoothScrollBy(0, delta);
+
+        scrollview.fullScroll(View.FOCUS_DOWN);
+        scrollview.post(new Runnable() {
+            @Override
+
+            public void run() {
+
+                scrollview.scrollTo(0, scrollview.getBottom());
+                scrollview.fullScroll(View.FOCUS_DOWN);
+
+            }
+        });
 
         mEditor = (RichEditor) findViewById(R.id.editor);
         mEditordesc = (RichEditor) findViewById(R.id.descField);
 
-
         mEditordesc.setEditorHeight(18);
         mEditordesc.setEditorFontSize(18);
         mEditordesc.setPadding(5,5,20,20);
+
         mEditordesc.setPlaceholder("Say something nice...      ");
 
 
         mEditor.setEditorHeight(18);
         mEditor.setEditorFontSize(18);
-        mEditor.setPadding(5,5,20,20);
+        mEditor.setPadding(50,50,50,50);
         mEditor.setPlaceholder("Say something nice...      ");
         mEditor.loadCSS("file:///android_asset/img.css");
-        mEditor.computeScroll();
+        mEditor.focusEditor();
 
 
         mAuth = FirebaseAuth.getInstance();
@@ -132,6 +166,8 @@ public class PostActivity extends AppCompatActivity {
         });*/
 
 
+
+
         findViewById(R.id.action_bold1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -151,6 +187,8 @@ public class PostActivity extends AppCompatActivity {
 
             }
         });
+
+
 
     }
 
