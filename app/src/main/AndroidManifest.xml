@@ -31,7 +31,8 @@
             android:label=""
             android:name=".PostActivity"
             android:windowSoftInputMode="adjustResize"
-          />
+
+            />
         <activity
             android:name=".timetable"
             android:label="Salah Times"
