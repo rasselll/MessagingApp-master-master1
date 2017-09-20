@@ -11,6 +11,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -38,6 +39,12 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.net.URI;
+import java.sql.Array;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -58,7 +65,7 @@ public class PostActivity extends AppCompatActivity {
     private Button mSubmitBtn;
 
     private Uri mImageURi = null;
-    private Uri mcontentURI = null;
+
 
     private static final int GALLERY_REQUEST = 1;
 
@@ -113,7 +120,7 @@ public class PostActivity extends AppCompatActivity {
 
         mEditor.setEditorHeight(18);
         mEditor.setEditorFontSize(18);
-        mEditor.setPadding(50, 50, 50, 50);
+        mEditor.setPadding(10, 10, 10, 10);
         mEditor.setPlaceholder("Say something nice...      ");
         mEditor.loadCSS("file:///android_asset/img.css");
         mEditor.focusEditor();
@@ -196,7 +203,7 @@ public class PostActivity extends AppCompatActivity {
         Random generator = new Random();
 
         StringBuilder randomStringBuilder = new StringBuilder();
-        int randomLength = generator.nextInt(32);
+        int randomLength = generator.nextInt(10);
         char tempChar;
         for (int i = 0; i < randomLength; i++) {
             tempChar = (char) (generator.nextInt(96) + 32);
@@ -231,34 +238,111 @@ public class PostActivity extends AppCompatActivity {
         }
 
 
-        mcontentURI = Uri.parse(countImg);
-final String img;
+
+
+/*
+            //find first src=content
+            Pattern imgContent = Pattern.compile("(?<=<img src=\")[^\"]*");
+            Matcher imgContentMatcher = pattern.matcher(content_val);
+
+            //replace with URL
+            if (matcher.find()) {
+               // mcontentURI[0]= (imgContentMatcher.group(1));
+            }
+*/
+
+
+
+final String[] img = new String[count];
+final String[] replacedStr = new String[1];
+
+        //find all img
+        //store all img
+        //replace all img
+
 
         if (!TextUtils.isEmpty(title_val) && !TextUtils.isEmpty(desc_val) && mImageURi != null) {
             mProgress.show();
             StorageReference filepath = mStorage.child("Blog_Image").child(mImageURi.getLastPathSegment());
 
 
-            StorageReference filepath1 = mStorage.child("Blog_Image").child(mcontentURI.getLastPathSegment() + random());
+            //store all image sources
+            final Uri mcontentURI[] = new Uri[count];
+            final Pattern p = Pattern.compile("src=\"(.*?)\"");
+            Matcher m = p.matcher(content_val);
+            int imgnum = 0;
+            while (imgnum < count && m.find()) {
+                mcontentURI[imgnum++] = Uri.parse(m.group(1));
+            }
 
-            filepath1.putFile(mcontentURI).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            //loop to add each images to database
+            for(int i =0; i < count; i++) {
+
+
+                final int index = i;
+                StorageReference filepath1 = mStorage.child("Blog_Image").child(mcontentURI[index].getLastPathSegment() + random());
+                filepath1.putFile(mcontentURI[index]).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                        final Uri downlaodUrl = taskSnapshot.getDownloadUrl();
+                        String b = downlaodUrl.toString();
+                        img[index] = b;
+
+                        //find first src=content
+                        String imgSrc="found";
+                        Pattern pattern = Pattern.compile("src=\"content(.*?)\"");
+                        Matcher matcher = pattern.matcher(content_val);
+
+                        replacedStr[0] = img[index];
+
+                        //replace with URL
+                        if (matcher.find()) {
+                            imgSrc = "(?<=<img src=\")[^\"]*";
+                            replacedStr[0] = content_val.replaceFirst(imgSrc, img[index]);
+                            img[index] = replacedStr[0];
+
+                        }
+
+
+
+
+
+                    }
+
+
+                });
+            }
+
+
+/*
+         //   StorageReference filepath1 = mStorage.child("Blog_Image").child(mImageURi.getLastPathSegment() + random());
+
+
+            //create and store image url
+            filepath1.putFile(mImageURi).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
                     final Uri downlaodUrl = taskSnapshot.getDownloadUrl();
-
                     String b = downlaodUrl.toString();
-
-                    newimg  = b;
+                    img[0]  = b;
 
                 }
 
+
+
+
             });
+*/
 
 
 
 
 
 
+            final String timeStamp = new SimpleDateFormat("EEEE, MMMM d, yyyy").format(Calendar.getInstance().getTime());
 
 
             filepath.putFile(mImageURi).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -278,11 +362,12 @@ final String img;
                         public void onDataChange(DataSnapshot dataSnapshot) {
 
 
-                            newPost.child("content").setValue(content_val + " " + newimg);
+                            newPost.child("content").setValue(/*content_val + "   " +*/ img[0] + (Arrays.toString(mcontentURI).toString()));
                             newPost.child("title").setValue(title_val);
                             newPost.child("desc").setValue(desc_val);
                             newPost.child("image").setValue(downlaodUrl.toString());
                             newPost.child("uid").setValue(mCurrentUser.getUid());
+                            newPost.child("post_time").setValue(timeStamp);
                             newPost.child("username").setValue(dataSnapshot.child("name").getValue()).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {

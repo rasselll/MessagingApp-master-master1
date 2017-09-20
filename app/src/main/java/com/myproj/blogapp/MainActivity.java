@@ -328,7 +328,7 @@ public class MainActivity extends AppCompatActivity {
         public void setContent(String content) {
 
             TextView post_content = (TextView) mView.findViewById(R.id.post_content);
-            WebView webview = (WebView)  mView.findViewById(R.id.post_contentWeb);
+          //  WebView webview = (WebView)  mView.findViewById(R.id.post_contentWeb);
             WebView singleImg = (WebView) mView.findViewById(R.id.post_singleImage);
 
 
@@ -343,8 +343,8 @@ public class MainActivity extends AppCompatActivity {
             }
 
 
-            webview.loadDataWithBaseURL(null, "<style>img{display: inline;height: auto;max-width: 100%;}</style>"+ content, "text/html", "utf-8", "");
-            webview.getSettings().setLoadsImagesAutomatically(false);
+          //  webview.loadDataWithBaseURL(null, "<style>img{display: inline;height: auto;max-width: 100%;}</style>"+ content, "text/html", "utf-8", "");
+           // webview.getSettings().setLoadsImagesAutomatically(false);
             singleImg.loadDataWithBaseURL(null,
                     "<style>html, body {\n" +
                     "width:100%;\n" +
@@ -370,9 +370,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         public void setImage(Context ctx, String image) {
-            ImageView post_image = (ImageView) mView.findViewById(R.id.post_image);
+       /*     ImageView post_image = (ImageView) mView.findViewById(R.id.post_image);
 
-            Picasso.with(ctx).load(image).into(post_image);
+            Picasso.with(ctx).load(image).into(post_image);*/
 
 
 

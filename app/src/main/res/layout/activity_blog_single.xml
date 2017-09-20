@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="fill_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
    >
@@ -17,6 +17,36 @@
 
 
 
+
+
+
+
+
+
+    <ImageView
+        android:id="@+id/imageview_post_userimage"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true" />
+
+    <TextView
+        android:id="@+id/titleSingleBlog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageview_post_userimage"
+        android:layout_alignTop="@+id/imageview_post_userimage"
+        android:layout_toRightOf="@+id/imageview_post_userimage"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+android:textColor="#000"
+        android:layout_alignParentRight="true"/>
+
+
+
+
+<!--
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,8 +56,25 @@
         android:layout_marginTop="49dp"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop" />
+-->
 
-    <TextView
+
+    <!--    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/contentSingleBlobg"
+            android:textSize="1dp"
+            android:text="Title"
+            android:textColor="#000"
+
+
+            />
+-->
+
+
+
+
+<!--    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Title"
@@ -36,38 +83,47 @@
         android:layout_alignParentStart="true"
         android:textColor="#000"
         android:textSize="20dp"
-        android:textStyle="normal" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Title"
-        android:id="@+id/contentSingleBlog"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:textColor="#000"
-        android:textSize="20dp"
-        android:textStyle="normal" />
-
-    <WebView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/singleContent_webView"
-        android:adjustViewBounds="true"
-        android:cropToPadding="false"
-        android:scaleType="centerCrop"
-        android:layout_below="@+id/descriptionSingleBlog"
-        android:layout_alignParentStart="true" />
+        android:textStyle="normal" />-->
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Description"
+        android:textSize="20dp"
         android:id="@+id/descriptionSingleBlog"
-        android:layout_below="@+id/imageSingleBlog"
+        android:layout_below="@+id/titleSingleBlog"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="74dp" />
+        android:layout_marginTop="25dp"
+android:textStyle="bold"
+        android:textColor="#000"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/timeSingleBlog"
+        android:layout_below="@+id/descriptionSingleBlog"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="5dp"
+        android:textColor="#C0C0C0"
+        android:textSize="15dp"
+        />
+
+    <WebView
+        android:layout_marginTop="15dp"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/singleContent_webView"
+        android:adjustViewBounds="true"
+        android:cropToPadding="false"
+        android:scaleType="centerCrop"
+        android:layout_below="@+id/timeSingleBlog"
+         />
+
+
+
 
     <Button
         android:layout_width="match_parent"

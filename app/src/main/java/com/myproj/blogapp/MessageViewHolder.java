@@ -36,7 +36,7 @@ Picasso
         .with(context)
                 .load(imageUrl)
                 .error(R.drawable.error)
-                .resize(120, 120)
+                .resize(130, 130)
                 .transform(new CropCircleTransformation())
                 .into(showImage);
 
