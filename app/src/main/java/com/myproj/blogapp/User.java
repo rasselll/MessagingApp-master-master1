@@ -10,15 +10,17 @@ public class User {
     private String status;
     private String onlinestatus;
     private String image;
+    private String uid;
 
     public User() {
     }
 
-    public User(String name, String status, String onlinestatus, String image) {
+    public User(String name, String status, String onlinestatus, String image, String uid) {
         this.name = name;
         this.status = status;
         this.onlinestatus = onlinestatus;
         this.image = image;
+        this.uid = uid;
     }
 
     public String getName() {
@@ -52,5 +54,13 @@ public class User {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 }

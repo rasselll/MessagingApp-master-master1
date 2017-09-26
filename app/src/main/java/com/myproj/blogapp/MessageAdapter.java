@@ -48,6 +48,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageViewHolder> {
 
     private FirebaseUser mCurrentUser;
     public static int INCOMING = 1;
+    public static int INCOMING_SENT = 3;
     public static int OUTGOING = 0;
 
 
@@ -65,13 +66,20 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageViewHolder> {
         mDatabaseUser = FirebaseDatabase.getInstance().getReference().child("Users").child(mCurrentUser.getUid());
         String last = mDatabaseUser.toString().substring(mDatabaseUser.toString().lastIndexOf('/') + 1);
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child("name");
+
+
         Message m = messagesList.get(position);
+
+
         if( m.getFrom().equals(last)){
             return  MessageAdapter.INCOMING;
 
-        }else{
+        }
+        if( m.getFrom()!=(last)){
             return MessageAdapter.OUTGOING;
         }
+
+        return 0;
     }
 
     @Override
@@ -82,10 +90,14 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageViewHolder> {
 
         View v = null;
 
+
         if( viewType == MessageAdapter.OUTGOING ) {
             v = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.messages_layout, parent, false);
-        }else if ( viewType == MessageAdapter.INCOMING) {
+
+        }
+
+        if ( viewType == MessageAdapter.INCOMING) {
             v = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.messages_layout_sent, parent, false);
         }
