@@ -26,7 +26,7 @@
         android:layout_toEndOf="@+id/imageview_post_userimage1" />
 
     <TextView
-        android:id="@+id/userstatus"
+        android:id="@+id/userstatus4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/username"

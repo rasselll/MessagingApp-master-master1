@@ -11,16 +11,18 @@ public class User {
     private String onlinestatus;
     private String image;
     private String uid;
+    private String message;
 
     public User() {
     }
 
-    public User(String name, String status, String onlinestatus, String image, String uid) {
+    public User(String name, String status, String onlinestatus, String image, String message, String uid) {
         this.name = name;
         this.status = status;
         this.onlinestatus = onlinestatus;
         this.image = image;
         this.uid = uid;
+        this.message = message;
     }
 
     public String getName() {
@@ -62,5 +64,13 @@ public class User {
 
     public void setUid(String uid) {
         this.uid = uid;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.content.Context;
@@ -48,9 +49,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageViewHolder> {
 
     private FirebaseUser mCurrentUser;
     public static int INCOMING = 1;
-    public static int INCOMING_SENT = 3;
     public static int OUTGOING = 0;
-
+    private static final String TAG = "myApp";
 
 
 
@@ -69,6 +69,9 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageViewHolder> {
 
 
         Message m = messagesList.get(position);
+        int a = messagesList.size();
+        String b = Integer.toString(a);
+        Log.e(TAG, b);
 
 
         if( m.getFrom().equals(last)){
@@ -84,7 +87,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageViewHolder> {
 
     @Override
     public MessageViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Message c = messagesList.get(viewType);
+        Log.d("Error555", String.valueOf(viewType));
+        Message c = messagesList.get(viewType -1);
         String sender = c.getFrom();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(sender);
 

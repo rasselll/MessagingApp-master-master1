@@ -28,6 +28,11 @@ public class UserViewHolder extends RecyclerView.ViewHolder {
         userNameView.setText(name);
     }
 
+    public void setMessage(String message) {
+        TextView userStatusView = (TextView) userView.findViewById(R.id.userstatus4);
+        userStatusView.setText(message);
+    }
+
 
 
     public void setUserimage(Context context, String imageUrl) {
@@ -44,14 +49,14 @@ public class UserViewHolder extends RecyclerView.ViewHolder {
 
 
     public void setUserStatus(String status) {
-        TextView userStatusView = (TextView) userView.findViewById(R.id.userstatus);
-        userStatusView.setText(status);
+ /*       TextView userStatusView = (TextView) userView.findViewById(R.id.userstatus4);
+        userStatusView.setText(message);*/
     }
 
 
     public void setUid(String uid) {
-        TextView userStatusView = (TextView) userView.findViewById(R.id.userstatus);
-        userStatusView.setText(uid);
+    /*    TextView userStatusView = (TextView) userView.findViewById(R.id.userstatus);
+        userStatusView.setText(uid);*/
     }
 
     public void setUserOnlineStatus(String status) {

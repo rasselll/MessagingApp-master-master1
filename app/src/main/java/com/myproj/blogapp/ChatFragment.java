@@ -3,6 +3,7 @@ package com.myproj.blogapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -131,7 +132,7 @@ public class ChatFragment extends Fragment {
                     User.class,
                     R.layout.userlist_layout,
                     UserViewHolder.class,
-                    userKeyRef,
+                    users,
                     userRef
             )  {
 
@@ -153,46 +154,53 @@ public class ChatFragment extends Fragment {
 
                 rootRef = FirebaseDatabase.getInstance().getReference();
                 chatIdRef = rootRef.child("Chatmessages").child(last);
-                eventListener = new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        for(DataSnapshot ds : dataSnapshot.getChildren()) {
-                            String uid = ds.getKey();
-                            usersRef = rootRef.child("Users").child(uid);
-                            ValueEventListener eventListener = new ValueEventListener() {
-                                @Override
-                                public void onDataChange(DataSnapshot dataSnapshot) {
-                                    String image = dataSnapshot.child("image").getValue(String.class);
-                                    String name = dataSnapshot.child("name").getValue(String.class);
-                                    Boolean onlineStatus = dataSnapshot.child("onlineStatus").getValue(Boolean.class);
-                                    String status = dataSnapshot.child("username").getValue(String.class);
-                                    Log.d("TAG", image + " / " + name + " / " + onlineStatus + " / " + status);
-                                }
-
-                                @Override
-                                public void onCancelled(DatabaseError databaseError) {}
-                            };
-                            usersRef.addListenerForSingleValueEvent(eventListener);
-
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {}
-                };
 
 
                 final String userid = getRef(position).getKey();
                 viewHolder.setDisplayName(model.getName());
                 viewHolder.setUserStatus(model.getStatus());
                 viewHolder.setUserimage(getContext(),model.getImage());
+                viewHolder.setMessage(model.getMessage());
                 viewHolder.setUid(model.getUid());
+
+
+
+
+                DatabaseReference d = rootRef.child("Chatmessages").child(last).child(userid);
+
+                Query lastQuery = rootRef.child("Chatmessages").child(last).child(userid).limitToLast(1);
+                lastQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        for (DataSnapshot child: dataSnapshot.getChildren()) {
+                            String message = child.child("message").getValue().toString();
+
+                        viewHolder.setMessage(message);
+
+                            Log.w("myApp", message);
+                         //   viewHolder.setUserStatus("dsdfds");
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+
+
 
 
                 users.child(userid).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                        final String userName = dataSnapshot.child("name").getValue().toString();
+                  /*      final String message  = dataSnapshot.child("name").getValue().toString();
+                        viewHolder.setMessage(message);*/
                /*         final String imageURI = dataSnapshot.child("image").getValue().toString();
                         viewHolder.setUserimage(getContext(), imageURI);*/
 
@@ -206,8 +214,8 @@ public class ChatFragment extends Fragment {
                             public void onClick(View view) {
                                 Intent chatIntent = new Intent(getContext(), ChatActivity.class);
                                 chatIntent.putExtra("userid", userid);
-                                chatIntent.putExtra("userName", userName);
-                              //  chatIntent.putExtra("imageURI", imageURI);
+                               chatIntent.putExtra("userName", userName);
+                               //chatIntent.putExtra("imageURI", imageURI);
 
                                 startActivity(chatIntent);
                             }
